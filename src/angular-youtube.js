@@ -1,0 +1,1 @@
+var ytApp = angular.module('ytApp', []);

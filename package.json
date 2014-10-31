@@ -1,0 +1,27 @@
+{
+  "name": "angular-youtube",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PepijnSenders/angular-youtube.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PepijnSenders/angular-youtube/issues"
+  },
+  "homepage": "https://github.com/PepijnSenders/angular-youtube",
+  "dependencies": {
+    "gulp": "^3.8.9",
+    "gulp-concat": "^2.4.1",
+    "gulp-uglify": "^1.0.1"
+  }
+}
