@@ -1,4 +1,4 @@
-ytApp.service('Youtube', function($window, $timeout) {
+ytApp.service('Youtube', function($window, $timeout, $q) {
 
   var Youtube = this;
 
@@ -12,27 +12,33 @@ ytApp.service('Youtube', function($window, $timeout) {
     '-2': 'READY'
   };
 
+  var apiDeferred = $q.defer(),
+      apiPromise = apiDeferred.promise;
+
   $window.onYouTubeIframeAPIReady = function() {
     $timeout(function() {
       Youtube.YT = $window.YT;
+      apiDeferred.resolve();
     });
   };
 
   this.addVideo = function(element, videoId, width, height) {
-    this.player = new this.YT.Player(element, {
-      width: width,
-      height: height,
-      videoId: videoId,
-      playerVars: {
-        rel: 0,
-        autohide: 1,
-        modestbranding: 1,
-        showinfo:0
-      },
-      events: {
-        'onReady': this.onReady.bind(this),
-        'onStateChange': this.onStateChange.bind(this)
-      }
+    apiPromise.then(function() {
+      Youtube.player = new Youtube.YT.Player(element, {
+        width: width,
+        height: height,
+        videoId: videoId,
+        playerVars: {
+          rel: 0,
+          autohide: 1,
+          modestbranding: 1,
+          showinfo:0
+        },
+        events: {
+          'onReady': Youtube.onReady.bind(Youtube),
+          'onStateChange': Youtube.onStateChange.bind(Youtube)
+        }
+      });
     });
   };
 
