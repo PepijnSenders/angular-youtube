@@ -45,7 +45,7 @@ ytApp.service('Youtube', function($window, $timeout) {
 
   this.onStateChange = function(e) {
     $timeout(function() {
-      var data = JSON.parse(event.data);
+      var data = JSON.parse(e.data);
       Youtube.status = Youtube.playerStates[data.info];
     });
   };
