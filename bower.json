@@ -1,6 +1,6 @@
 {
   "name": "angular-youtube",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "homepage": "https://github.com/PepijnSenders/angular-youtube",
   "authors": [
     "Pepijn Senders <p.senders92@gmail.com>"
@@ -12,8 +12,5 @@
     "bower_components",
     "test",
     "tests"
-  ],
-  "dependencies": {
-    "angular": "~1.3.0"
-  }
+  ]
 }
