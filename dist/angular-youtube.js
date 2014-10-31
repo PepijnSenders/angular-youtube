@@ -1,5 +1,5 @@
 var ytApp = angular.module('ytApp', []);
-ytApp.service('Youtube', function($window) {
+ytApp.service('Youtube', function($window, $timeout) {
 
   var Youtube = this;
 
@@ -14,7 +14,7 @@ ytApp.service('Youtube', function($window) {
   };
 
   $window.onYouTubeIframeAPIReady = function() {
-    $rootScope.$apply(function() {
+    $timeout(function() {
       Youtube.YT = $window.YT;
     });
   };
@@ -38,13 +38,13 @@ ytApp.service('Youtube', function($window) {
   };
 
   this.onReady = function(e) {
-    $rootScope.$apply(function() {
+    $timeout(function() {
       Youtube.status = 'READY';
     });
   };
 
   this.onStateChange = function(e) {
-    $rootScope.$apply(function() {
+    $timeout(function() {
       var data = JSON.parse(event.data);
       Youtube.status = Youtube.playerStates[data.info];
     });
